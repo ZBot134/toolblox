@@ -1,0 +1,84 @@
+:root {
+  --bg-color-light: #f4f4f4;
+  --text-color-light: #333;
+  --bg-color-dark: #121212;
+  --text-color-dark: #e0e0e0;
+  --primary-color: #0077ff;
+  --tool-bg-light: #fff;
+  --tool-bg-dark: #1e1e1e;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.tool {
+  background: var(--tool-bg-light);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.1s, background-color 0.3s;
+}
+
+body.dark .tool {
+  background: var(--tool-bg-dark);
+}
+
+.tool:hover {
+  transform: scale(1.03);
+}
+
+.tool a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.dark-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}

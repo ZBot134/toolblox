@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ToolBlox - 40+ Useful Tools in One Place. Fast, clean, and free." />
+  <title>ToolBlox | 40+ Useful Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button class="dark-toggle" id="dark-toggle">Dark Mode</button>
+  <header>
+    <h1>ToolBlox</h1>
+    <p>40+ Useful Tools in One Clean, Fast Place</p>
+  </header>
+  <main>
+    <section class="tools" id="tools-list"></section>
+  </main>
+  <footer>
+    <p>© 2025 ToolBlox | Hosted with ❤️ on GitHub Pages</p>
+  </footer>
+  <script>
+    const tools = [
+      "Coin Flip", "Dice Roller", "Stopwatch", "Countdown Timer", "Tip Calculator",
+      "Random Number Generator", "Password Strength Checker", "Password Generator", "Unit Converter", "BMI Calculator",
+      "Word Counter", "Text Reverser", "Remove Duplicate Lines", "Base64 Encoder", "Base64 Decoder",
+      "Lorem Ipsum Generator", "Text Case Converter", "Markdown Previewer", "Typing Speed Test", "Emoji Picker",
+      "JSON Formatter", "URL Encoder", "URL Decoder", "Regex Tester", "IP Finder",
+      "Color Picker", "HEX to RGB Converter", "HTML Entity Encoder", "QR Code Generator", "Name Picker",
+      "Random Word Generator", "Random Date Generator", "Yes/No/Maybe", "Random Emoji", "Country Generator",
+      "Fast Food Picker", "Excuse Generator", "Fortune Cookie", "Fake Email Generator", "Time Zone Converter",
+      "Text Difference Checker", "Color Contrast Checker", "Simple Calculator", "JSON Minifier", "Age in Days Calculator"
+    ];
+    const toolsList = document.getElementById("tools-list");
+    tools.forEach(tool => {
+      const slug = tool.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      toolsList.innerHTML += `
+        <div class="tool">
+          <a href="tools/${slug}.html">${tool}</a>
+        </div>
+      `;
+    });
+
+    const toggle = document.getElementById("dark-toggle");
+    function setDarkMode(on) {
+      if (on) document.body.classList.add("dark");
+      else document.body.classList.remove("dark");
+      localStorage.setItem("darkMode", on ? "true" : "false");
+      toggle.textContent = on ? "Light Mode" : "Dark Mode";
+    }
+    toggle.addEventListener("click", () => {
+      setDarkMode(!document.body.classList.contains("dark"));
+    });
+    // On load, set mode based on localStorage or prefers-color-scheme
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode === "true") setDarkMode(true);
+    else if (savedMode === "false") setDarkMode(false);
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
+  </script>
+</body>
+</html>
